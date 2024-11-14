@@ -1,4 +1,4 @@
-import { isEmail, isString } from 'class-validator';
+// import { isEmail, isString } from 'class-validator';
 
 export class CreateUserDto {
   name: string;
