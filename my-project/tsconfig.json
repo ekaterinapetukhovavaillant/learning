@@ -12,10 +12,18 @@
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
     "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "strict": true,
+    "allowJs": false,
+    "noUnusedLocals": true,
+    "strictPropertyInitialization": true,
+    "noUnusedParameters": true,
+    "newLine": "lf",
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
   }
 }
