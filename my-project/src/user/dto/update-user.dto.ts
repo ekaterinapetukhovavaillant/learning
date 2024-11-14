@@ -1,4 +1,6 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateUserDto } from './create-user.dto';
+import { createUserDtoSchema } from './create-user.dto';
+import { z } from 'zod';
 
-export class UpdateUserDto extends PartialType(CreateUserDto) {}
+export const updateUserDtoSchema = z.optional(createUserDtoSchema);
+
+export type UpdateUserDto = z.infer<typeof updateUserDtoSchema>;
