@@ -25,15 +25,15 @@ export class UserService {
     return await this.prisma.user.findMany();
   }
 
-  findOne(id: number) {
+  public findOne(id: number) {
     return `This action returns a #${id} user`;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
+  public update(id: number, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
   }
 
-  remove(id: number) {
+  public remove(id: number) {
     return `This action removes a #${id} user`;
   }
 
