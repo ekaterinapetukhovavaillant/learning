@@ -8,16 +8,18 @@ import {
   Delete,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
+import { createUserDtoSchema } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { User } from './entities/user.entity';
+import { User } from '@prisma/client';
+import { ZodError } from 'zod';
 
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  create(@Body() user: CreateUserDto): Promise<User> {
+  create(@Body() body: unknown): Promise<User> {
+    const user = createUserDtoSchema.parse(body);
     return this.userService.create(user);
   }
 
