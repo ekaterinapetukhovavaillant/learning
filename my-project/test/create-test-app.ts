@@ -10,7 +10,7 @@ export async function createTestApp(): Promise<INestApplication> {
   const app = module.createNestApplication();
 
   await app.init();
-  await app.listen(3002);
+  await app.listen(0);
 
   return app;
 }
