@@ -44,6 +44,26 @@ describe('Updating a user', () => {
     expect(exsistingTestUser.name).toStrictEqual(userNameData.name);
   });
 
+  it('should update user email', async () => {
+    const userEmailData: UpdateUserDto = {
+      email: faker.internet.exampleEmail(),
+    };
+
+    const response = await request(app.getHttpServer())
+      .patch(`/user/${testUser.id}`)
+      .send(userEmailData);
+
+    expect(response.statusCode).toStrictEqual(200);
+
+    const exsistingTestUser = await prisma.user.findUniqueOrThrow({
+      where: {
+        id: testUser.id,
+      },
+    });
+
+    expect(exsistingTestUser.email).toStrictEqual(userEmailData.email);
+  });
+
   afterAll(async () => {
     await app.close();
   });
