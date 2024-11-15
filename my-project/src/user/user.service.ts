@@ -22,8 +22,12 @@ export class UserService {
     return await this.prisma.user.findMany();
   }
 
-  public findOne(id: number) {
-    return `This action returns a #${id} user`;
+  public async findOne(id: string) {
+    return await this.prisma.user.findUniqueOrThrow({
+      where: {
+        id: id,
+      },
+    });
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

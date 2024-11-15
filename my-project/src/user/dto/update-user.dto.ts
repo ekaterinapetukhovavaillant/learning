@@ -3,4 +3,4 @@ import { z } from 'zod';
 
 export const updateUserDtoSchema = createUserDtoSchema.partial();
 
-export type UpdateUserDto = z.infer<typeof updateUserDtoSchema>;
+export type UpdateUserDto = z.output<typeof updateUserDtoSchema>;
