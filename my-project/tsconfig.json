@@ -13,7 +13,7 @@
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
-    "noImplicitAny": true,
+    // "noImplicitAny": true,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
@@ -25,5 +25,6 @@
     "newLine": "lf",
     "strictFunctionTypes": true,
     "noImplicitThis": true,
+    "esModuleInterop": true,
   }
 }

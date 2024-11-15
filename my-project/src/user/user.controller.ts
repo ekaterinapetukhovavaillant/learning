@@ -11,14 +11,18 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from '@prisma/client';
+import { CreateUserService } from './service/create-user.service';
 
 @Controller('user')
 export class UserController {
-  private constructor(private readonly userService: UserService) {}
+  public constructor(
+    private readonly userService: UserService,
+    private readonly createUserService: CreateUserService,
+  ) {}
 
   @Post()
-  public create(@Body() user: CreateUserDto): Promise<User> {
-    return this.userService.create(user);
+  public create(@Body() createUserDto: CreateUserDto): Promise<User> {
+    return this.createUserService.execute(createUserDto);
   }
 
   @Get()
