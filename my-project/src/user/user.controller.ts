@@ -6,10 +6,11 @@ import {
   Param,
   Delete,
   Patch,
+  ParseUUIDPipe,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { createUserDtoSchema } from './dto/create-user.dto';
+import { updateUserDtoSchema } from './dto/update-user.dto';
 import { User } from '@prisma/client';
 import { CreateUserService } from './service/create-user.service';
 import { UpdateUserService } from './service/update-user.service.dto';
@@ -23,7 +24,9 @@ export class UserController {
   ) {}
 
   @Post()
-  public create(@Body() createUserDto: CreateUserDto): Promise<User> {
+  public create(@Body() value: unknown): Promise<User> {
+    const createUserDto = createUserDtoSchema.parse(value);
+
     return this.createUserService.execute(createUserDto);
   }
 
@@ -33,15 +36,17 @@ export class UserController {
   }
 
   @Get(':id')
-  public findOne(@Param('id') id: string) {
+  public findOne(@Param('id', ParseUUIDPipe) id: string) {
     return this.userService.findOne(id);
   }
 
   @Patch(':id')
   public update(
-    @Param('id') id: string,
-    @Body() updateUserDto: UpdateUserDto,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() value: unknown,
   ): Promise<User> {
+    const updateUserDto = updateUserDtoSchema.parse(value);
+
     return this.updateUserService.execute(id, updateUserDto);
   }
 
