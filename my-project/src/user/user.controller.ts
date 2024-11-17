@@ -14,14 +14,14 @@ import { User } from '@prisma/client';
 import { CreateUserService } from './service/create-user.service';
 import { UpdateUserService } from './service/update-user.service';
 import { GetAllUsersService } from './service/get-all-users.service';
-import { GetUniqueUserService } from './service/get-unique-user.service';
+import { GetUserByIdService } from './service/get-user-by-id.service';
 import { DeleteUserService } from './service/delete-user.service';
 
 @Controller('user')
 export class UserController {
   public constructor(
     private readonly getAllUsersService: GetAllUsersService,
-    private readonly getUniqueUserService: GetUniqueUserService,
+    private readonly getUserByIdService: GetUserByIdService,
     private readonly createUserService: CreateUserService,
     private readonly updateUserService: UpdateUserService,
     private readonly deleteUserService: DeleteUserService,
@@ -41,7 +41,7 @@ export class UserController {
 
   @Get(':id')
   public findOne(@Param('id', ParseUUIDPipe) id: string): Promise<User> {
-    return this.getUniqueUserService.execute(id);
+    return this.getUserByIdService.execute(id);
   }
 
   @Patch(':id')

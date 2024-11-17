@@ -4,7 +4,7 @@ import { PrismaModule } from '../../src/prisma/prisma.module';
 import { CreateUserService } from './service/create-user.service';
 import { UpdateUserService } from './service/update-user.service';
 import { GetAllUsersService } from './service/get-all-users.service';
-import { GetUniqueUserService } from './service/get-unique-user.service';
+import { GetUserByIdService } from './service/get-user-by-id.service';
 import { DeleteUserService } from './service/delete-user.service';
 
 @Module({
@@ -12,7 +12,7 @@ import { DeleteUserService } from './service/delete-user.service';
   controllers: [UserController],
   providers: [
     GetAllUsersService,
-    GetUniqueUserService,
+    GetUserByIdService,
     CreateUserService,
     UpdateUserService,
     DeleteUserService,
