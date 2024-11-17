@@ -2,9 +2,10 @@ import { Module } from '@nestjs/common';
 import { PrismaModule } from './prisma/prisma.module';
 import { UserModule } from './user/user.module';
 import { ZodValidationErrorFilter } from './exceptions/zod-vallidation-error.filter';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [PrismaModule, UserModule],
+  imports: [PrismaModule, UserModule, AuthModule],
   controllers: [],
   providers: [ZodValidationErrorFilter],
 })
