@@ -13,7 +13,7 @@ import { createUserDtoSchema } from './dto/create-user.dto';
 import { updateUserDtoSchema } from './dto/update-user.dto';
 import { User } from '@prisma/client';
 import { CreateUserService } from './service/create-user.service';
-import { UpdateUserService } from './service/update-user.service.dto';
+import { UpdateUserService } from './service/update-user.service';
 
 @Controller('user')
 export class UserController {
