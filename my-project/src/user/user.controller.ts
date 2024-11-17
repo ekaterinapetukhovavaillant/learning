@@ -8,7 +8,6 @@ import {
   Patch,
   ParseUUIDPipe,
 } from '@nestjs/common';
-import { UserService } from './user.service';
 import { createUserDtoSchema } from './dto/create-user.dto';
 import { updateUserDtoSchema } from './dto/update-user.dto';
 import { User } from '@prisma/client';
@@ -16,15 +15,16 @@ import { CreateUserService } from './service/create-user.service';
 import { UpdateUserService } from './service/update-user.service';
 import { GetAllUsersService } from './service/get-all-users.service';
 import { GetUniqueUserService } from './service/get-unique-user.service';
+import { DeleteUserService } from './service/delete-user.service';
 
 @Controller('user')
 export class UserController {
   public constructor(
-    private readonly userService: UserService,
     private readonly getAllUsersService: GetAllUsersService,
     private readonly getUniqueUserService: GetUniqueUserService,
     private readonly createUserService: CreateUserService,
     private readonly updateUserService: UpdateUserService,
+    private readonly deleteUserService: DeleteUserService,
   ) {}
 
   @Post()
@@ -55,7 +55,7 @@ export class UserController {
   }
 
   @Delete(':id')
-  public remove(@Param('id') id: string): string {
-    return this.userService.remove(+id);
+  public remove(@Param('id', ParseUUIDPipe) id: string): Promise<User> {
+    return this.deleteUserService.execute(id);
   }
 }
