@@ -1,15 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { User } from '@prisma/client';
 
 @Injectable()
 export class UserService {
   public constructor(private readonly prisma: PrismaService) {}
 
-  public async findAll() {
-    return await this.prisma.user.findMany();
-  }
-
-  public async findOne(id: string) {
+  public async findOne(id: string): Promise<User> {
     return await this.prisma.user.findUniqueOrThrow({
       where: {
         id: id,
@@ -17,7 +14,7 @@ export class UserService {
     });
   }
 
-  public remove(id: number) {
+  public remove(id: number): string {
     return `This action removes a #${id} user`;
   }
 }

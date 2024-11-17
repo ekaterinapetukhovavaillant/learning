@@ -14,11 +14,13 @@ import { updateUserDtoSchema } from './dto/update-user.dto';
 import { User } from '@prisma/client';
 import { CreateUserService } from './service/create-user.service';
 import { UpdateUserService } from './service/update-user.service';
+import { GetAllUsersService } from './service/get-all-users.service';
 
 @Controller('user')
 export class UserController {
   public constructor(
     private readonly userService: UserService,
+    private readonly getAllUsersService: GetAllUsersService,
     private readonly createUserService: CreateUserService,
     private readonly updateUserService: UpdateUserService,
   ) {}
@@ -31,12 +33,12 @@ export class UserController {
   }
 
   @Get()
-  public findAll() {
-    return this.userService.findAll();
+  public findAll(): Promise<User[]> {
+    return this.getAllUsersService.execute();
   }
 
   @Get(':id')
-  public findOne(@Param('id', ParseUUIDPipe) id: string) {
+  public findOne(@Param('id', ParseUUIDPipe) id: string): Promise<User> {
     return this.userService.findOne(id);
   }
 
@@ -51,7 +53,7 @@ export class UserController {
   }
 
   @Delete(':id')
-  public remove(@Param('id') id: string) {
+  public remove(@Param('id') id: string): string {
     return this.userService.remove(+id);
   }
 }
