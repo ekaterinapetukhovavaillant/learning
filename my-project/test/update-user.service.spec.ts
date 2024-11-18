@@ -66,9 +66,9 @@ describe('Updating a user', () => {
   });
 
   it('should update user password', async () => {
-    const userPasswordData: UpdateUserDto = {
+    const userPasswordData = {
       password: faker.internet.password(),
-    };
+    } satisfies UpdateUserDto;
 
     const response = await request(app.getHttpServer())
       .patch(`/user/${testUser.id}`)
@@ -83,7 +83,7 @@ describe('Updating a user', () => {
     });
 
     const match = brcypt.compare(
-      userPasswordData.password!,
+      userPasswordData.password,
       exsistingTestUser.password,
     );
 

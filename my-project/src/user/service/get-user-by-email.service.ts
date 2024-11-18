@@ -3,13 +3,13 @@ import { User } from '@prisma/client';
 import { PrismaService } from '../../prisma/prisma.service';
 
 @Injectable()
-export class DeleteUserService {
+export class GetUserByEmailService {
   public constructor(private readonly prisma: PrismaService) {}
 
-  public async execute(id: string): Promise<User> {
-    return await this.prisma.user.delete({
+  public async execute(email: string): Promise<User> {
+    return await this.prisma.user.findUniqueOrThrow({
       where: {
-        id,
+        email: email,
       },
     });
   }
