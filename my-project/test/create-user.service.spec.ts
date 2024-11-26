@@ -2,7 +2,7 @@ import { createTestApp } from './create-test-app';
 import { INestApplication } from '@nestjs/common';
 import { PrismaService } from '../src/prisma/prisma.service';
 import { faker } from '@faker-js/faker';
-import { CreateUserDto } from 'src/user/dto/create-user.dto';
+import { CreateUserDto } from '../src/user/dto/create-user.dto';
 import request from 'supertest';
 
 describe('Creating a user', () => {
