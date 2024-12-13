@@ -1,19 +1,21 @@
 import { Injectable } from '@nestjs/common';
-import { Wallet } from '@prisma/client';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { User, Wallet } from '@prisma/client';
+import { PrismaService } from '../../../src/prisma/prisma.service';
 import { CreateWalletDto } from '../dto/create-wallet.dto';
 
 @Injectable()
 export class CreateWalletService {
   public constructor(private readonly prisma: PrismaService) {}
 
-  public async execute(createWalletDto: CreateWalletDto): Promise<Wallet> {
-    const walletData: CreateWalletDto = {
-      currency: createWalletDto.currency,
-    };
-
+  public async execute(
+    user: User,
+    createWalletDto: CreateWalletDto,
+  ): Promise<Wallet> {
     return this.prisma.wallet.create({
-      data: walletData,
+      data: {
+        ownerId: user.id,
+        ...createWalletDto,
+      },
     });
   }
 }

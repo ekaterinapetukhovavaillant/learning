@@ -19,6 +19,6 @@ import { GetUserByEmailService } from './service/get-user-by-email.service';
     UpdateUserService,
     DeleteUserService,
   ],
-  exports: [GetUserByEmailService],
+  exports: [GetUserByEmailService, GetUserByIdService],
 })
 export class UserModule {}
