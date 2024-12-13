@@ -6,4 +6,4 @@ export const createUserDtoSchema = z.object({
   password: z.string().min(8).max(20),
 });
 
-export type CreateUserDto = z.infer<typeof createUserDtoSchema>;
+export type CreateUserDto = z.output<typeof createUserDtoSchema>;

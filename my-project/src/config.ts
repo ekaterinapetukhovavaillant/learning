@@ -10,7 +10,7 @@ const configSchema = z
     };
   });
 
-export type ConfigInterface = z.infer<typeof configSchema>;
+export type ConfigInterface = z.output<typeof configSchema>;
 
 // eslint-disable-next-line no-process-env
 export const config = configSchema.parse(process.env);

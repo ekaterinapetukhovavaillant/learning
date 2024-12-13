@@ -2,7 +2,7 @@ import { INestApplication } from '@nestjs/common';
 import { PrismaService } from '../../src/prisma/prisma.service';
 import { createTestApp } from '../../test/create-test-app';
 import request from 'supertest';
-import { CreateWalletDto } from '../../src/wallet/dto/create-wallet.dto';
+import { CreateWalletDto } from '../../src/validation/currency';
 import { createUserAndToken } from './create-user-utils';
 
 describe("Creation and user's wallet", () => {

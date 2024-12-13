@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { User, Wallet } from '@prisma/client';
 import { PrismaService } from '../../../src/prisma/prisma.service';
-import { CreateWalletDto } from '../dto/create-wallet.dto';
+import { ValidCurrency } from '../../validation/currency';
 
 @Injectable()
 export class CreateWalletService {
@@ -9,7 +9,7 @@ export class CreateWalletService {
 
   public async execute(
     user: User,
-    createWalletDto: CreateWalletDto,
+    createWalletDto: ValidCurrency,
   ): Promise<Wallet> {
     return this.prisma.wallet.create({
       data: {

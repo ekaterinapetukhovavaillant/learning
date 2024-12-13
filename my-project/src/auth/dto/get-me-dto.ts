@@ -6,4 +6,4 @@ export const getMeDtoSchema = z.object({
   email: z.string().trim().email(),
 });
 
-export type GetMeDto = z.infer<typeof getMeDtoSchema>;
+export type GetMeDto = z.output<typeof getMeDtoSchema>;

@@ -5,4 +5,4 @@ export const loginDto = z.object({
   password: z.string(),
 });
 
-export type LoginDto = z.infer<typeof loginDto>;
+export type LoginDto = z.output<typeof loginDto>;

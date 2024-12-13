@@ -4,10 +4,19 @@ import { PrismaModule } from '../../src/prisma/prisma.module';
 import { AuthMiddleware } from '../../src/middleware/auth.middleware';
 import { CreateWalletService } from './service/create-wallet.service';
 import { DeleteWalletService } from './service/delete-wallet.service';
+import { AddFundsToWalletService } from './service/add-funds-to-wallet.service';
+import { GetWalletByCurrencyService } from './service/get-wallet-by-currency.service';
+import { WithdrawFundsFromWalletService } from './service/withdraw-funds-from-wallet.service';
 
 @Module({
   controllers: [WalletController],
-  providers: [CreateWalletService, DeleteWalletService],
+  providers: [
+    CreateWalletService,
+    DeleteWalletService,
+    AddFundsToWalletService,
+    WithdrawFundsFromWalletService,
+    GetWalletByCurrencyService,
+  ],
   imports: [PrismaModule],
 })
 export class WalletModule implements NestModule {
