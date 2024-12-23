@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma, User, Wallet } from '@prisma/client';
-import { PrismaService } from '../../../src/prisma/prisma.service';
+import { Currency, Prisma, User, Wallet } from '@prisma/client';
+import { PrismaService } from '../../prisma/prisma.service';
 import { GetWalletByCurrencyService } from './get-wallet-by-currency.service';
 
 @Injectable()
@@ -12,7 +12,7 @@ export class WithdrawFundsFromWalletService {
 
   public async execute(
     user: User,
-    currency: string,
+    currency: Currency,
     diffAmount: number,
   ): Promise<Wallet> {
     const wallet = await this.getWalletByCurrencyService.execute(

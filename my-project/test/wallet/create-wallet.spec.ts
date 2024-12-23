@@ -2,8 +2,8 @@ import { INestApplication } from '@nestjs/common';
 import { PrismaService } from '../../src/prisma/prisma.service';
 import { createTestApp } from '../../test/create-test-app';
 import request from 'supertest';
-import { CreateWalletDto } from '../../src/validation/currency';
 import { createUserAndToken } from './create-user-utils';
+import { ValidCurrency } from '../../src/validation/currency';
 
 describe("Creation and user's wallet", () => {
   let app: INestApplication;
@@ -20,7 +20,7 @@ describe("Creation and user's wallet", () => {
   it("Should create user's wallet", async () => {
     const prisma = app.get(PrismaService);
 
-    const walletData: CreateWalletDto = { currency: 'EUR' };
+    const walletData: ValidCurrency = { currency: 'EUR' };
 
     const response = await request(app.getHttpServer())
       .post('/wallet')

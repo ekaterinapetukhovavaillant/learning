@@ -1,12 +1,12 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Wallet } from '@prisma/client';
-import { PrismaService } from '../../../src/prisma/prisma.service';
+import { Currency, Wallet } from '@prisma/client';
+import { PrismaService } from '../../prisma/prisma.service';
 
 @Injectable()
 export class GetWalletByCurrencyService {
   public constructor(private readonly prisma: PrismaService) {}
 
-  public async execute(userId: string, currency: string): Promise<Wallet> {
+  public async execute(userId: string, currency: Currency): Promise<Wallet> {
     const wallet = await this.prisma.wallet.findFirst({
       where: {
         ownerId: userId,

@@ -1,7 +1,8 @@
+import { Currency } from '@prisma/client';
 import { z } from 'zod';
 
 export const validCurrencyObjectSchema = z.object({
-  currency: z.string().length(3),
+  currency: z.nativeEnum(Currency),
 });
 
 export const validCurrencyStringSchema =

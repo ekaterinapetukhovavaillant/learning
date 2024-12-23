@@ -1,21 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../../../src/prisma/prisma.service';
-import { Prisma, User, Wallet } from '@prisma/client';
+import { PrismaService } from '../../prisma/prisma.service';
+import { Currency, Prisma, User, Wallet } from '@prisma/client';
 import { GetWalletByCurrencyService } from './get-wallet-by-currency.service';
-
 @Injectable()
 export class AddFundsToWalletService {
   public constructor(
     private readonly prisma: PrismaService,
     private readonly getWalletByCurrencyService: GetWalletByCurrencyService,
   ) {}
-
-  //   user gives currency and fund
-  //   find needed wallet by currency
-  //   update fund
   public async execute(
     user: User,
-    currency: string,
+    currency: Currency,
     addedAmount: number,
   ): Promise<Wallet> {
     const wallet = await this.getWalletByCurrencyService.execute(

@@ -1,7 +1,7 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { WalletController } from './wallet.controller';
-import { PrismaModule } from '../../src/prisma/prisma.module';
-import { AuthMiddleware } from '../../src/middleware/auth.middleware';
+import { PrismaModule } from '../prisma/prisma.module';
+import { AuthMiddleware } from '../middleware/auth.middleware';
 import { CreateWalletService } from './service/create-wallet.service';
 import { DeleteWalletService } from './service/delete-wallet.service';
 import { AddFundsToWalletService } from './service/add-funds-to-wallet.service';

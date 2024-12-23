@@ -1,9 +1,10 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -16,12 +17,28 @@ model User {
   wallets   Wallet[]
 }
 
+enum Currency {
+  EUR
+  BYN
+  PLN
+  USD
+  CUP
+}
+
 model Wallet {
-  id       String  @id @default(uuid())
-  amount   Decimal @default(0)
-  currency String
-  owner    User    @relation(fields: [ownerId], references: [id])
+  id       String   @id @default(uuid())
+  amount   Decimal  @default(0)
+  currency Currency
+  owner    User     @relation(fields: [ownerId], references: [id])
   ownerId  String
 
   @@unique([ownerId, currency])
+}
+
+model CurrenciesExchange {
+  from String
+  to   String
+  rate Decimal
+
+  @@id([from, to])
 }

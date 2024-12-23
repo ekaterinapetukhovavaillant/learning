@@ -13,7 +13,7 @@ import {
 } from '../validation/currency';
 import { User, Wallet } from '@prisma/client';
 import { CreateWalletService } from './service/create-wallet.service';
-import { GetUser } from '../../src/auth/user.decorator';
+import { GetUser } from '../auth/user.decorator';
 import { DeleteWalletService } from './service/delete-wallet.service';
 import { AddFundsToWalletService } from './service/add-funds-to-wallet.service';
 import { z } from 'zod';

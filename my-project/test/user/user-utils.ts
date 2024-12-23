@@ -1,5 +1,5 @@
 import { INestApplication } from '@nestjs/common';
-import { LoginDto } from 'src/auth/dto/login-dto';
+import { LoginDto } from '../../src/auth/dto/login-dto';
 import request from 'supertest';
 
 export async function getToken(
