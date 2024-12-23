@@ -40,4 +40,8 @@ describe("Creation and user's wallet", () => {
     expect(wallet.currency).toStrictEqual(walletData.currency);
     expect(wallet.amount.toString()).toBe('0');
   });
+
+  afterAll(async () => {
+    await app.close();
+  });
 });

@@ -7,6 +7,8 @@ import { DeleteWalletService } from './service/delete-wallet.service';
 import { AddFundsToWalletService } from './service/add-funds-to-wallet.service';
 import { GetWalletByCurrencyService } from './service/get-wallet-by-currency.service';
 import { WithdrawFundsFromWalletService } from './service/withdraw-funds-from-wallet.service';
+import { GetAllWalletsService } from './service/get-all-wallets.service';
+import { ExchangeFundsService } from './service/exchange-funds.service';
 
 @Module({
   controllers: [WalletController],
@@ -16,6 +18,8 @@ import { WithdrawFundsFromWalletService } from './service/withdraw-funds-from-wa
     AddFundsToWalletService,
     WithdrawFundsFromWalletService,
     GetWalletByCurrencyService,
+    GetAllWalletsService,
+    ExchangeFundsService,
   ],
   imports: [PrismaModule],
 })

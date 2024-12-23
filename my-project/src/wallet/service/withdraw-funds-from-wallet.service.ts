@@ -24,7 +24,7 @@ export class WithdrawFundsFromWalletService {
 
     if (diffAmount > currentAmount) {
       throw new Error(
-        'The amount withdrawn is greater than the amount in the wallet',
+        'The amount of withdrawn funds is greater than the amount in the wallet',
       );
     }
 

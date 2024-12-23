@@ -14,7 +14,8 @@ export class GetWalletByCurrencyService {
       },
     });
 
-    if (!wallet) throw new NotFoundException();
+    if (!wallet)
+      throw new NotFoundException("You don't have wallet in this currency");
 
     return wallet;
   }
