@@ -3,10 +3,10 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { GetUserByEmailService } from '../user/service/get-user-by-email.service';
+import { GetUserByEmailService } from '../../user/service/get-user-by-email.service';
 import Jwt from 'jsonwebtoken';
 import * as bcrypt from 'bcrypt';
-import { config } from '../config';
+import { config } from '../../config';
 
 @Injectable()
 export class AuthService {
