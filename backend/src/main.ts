@@ -6,6 +6,7 @@ import { UpdateCurrenciesExchangeService } from './exchange/service/update-curre
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
   app.useGlobalFilters(app.get(ZodValidationErrorFilter));
+  app.enableCors();
   await app.listen(process.env.PORT ?? 3001);
 
   const updateCurrenciesExchangeService = app.get(
