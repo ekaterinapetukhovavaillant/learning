@@ -1,8 +1,4 @@
-import {
-  Injectable,
-  NotFoundException,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { GetUserByEmailService } from '../../user/service/get-user-by-email.service';
 import Jwt from 'jsonwebtoken';
 import * as bcrypt from 'bcrypt';
@@ -17,11 +13,17 @@ export class AuthService {
   public async login(email: string, pass: string): Promise<{ token: string }> {
     const user = await this.getUserByEmailService.execute(email);
 
-    if (!user) throw new NotFoundException();
+    if (!user)
+      throw new UnauthorizedException({
+        errorMessage: 'Incorrect email or password',
+      });
 
     const match = await bcrypt.compare(pass, user.password);
 
-    if (!match) throw new UnauthorizedException();
+    if (!match)
+      throw new UnauthorizedException({
+        errorMessage: 'Incorrect email or password',
+      });
 
     const payload = {
       id: user.id,

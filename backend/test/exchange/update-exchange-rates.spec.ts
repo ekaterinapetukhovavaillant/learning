@@ -21,6 +21,7 @@ describe('Updating of exchange rates', () => {
     );
 
     const apiSpy = jest.spyOn(getCurrenciesRateFromApiService, 'execute');
+
     apiSpy.mockImplementation((from, to) => {
       if (from === 'EUR' && to === 'USD') {
         return Promise.resolve('1.9');
