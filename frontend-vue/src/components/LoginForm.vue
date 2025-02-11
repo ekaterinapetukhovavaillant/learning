@@ -20,7 +20,6 @@ import { loginUser } from "../util/auth-user-and-get-token";
 import { useMutation } from "@tanstack/vue-query";
 import router from "../router/router";
 import { ZodError } from "zod";
-import { NotFoundError } from "../errors/not-found-error";
 import { UnauthorizedError } from "../errors/unauthorized-error";
 
 const formData = ref({

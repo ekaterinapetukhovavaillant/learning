@@ -1,7 +1,6 @@
 import { config } from "../config";
 import { type ValidLogin } from "../validation/form.validation";
-import { savedToken, updateUserStore, userStore } from "../store/user-store";
-import { NotFoundError } from "../errors/not-found-error";
+import { savedToken } from "../store/user-store";
 import { UnauthorizedError } from "../errors/unauthorized-error";
 
 export const loginUser = async (data: ValidLogin) => {
@@ -22,6 +21,4 @@ export const loginUser = async (data: ValidLogin) => {
   const body = await response.json();
 
   savedToken.value = body.token;
-
-  // updateUserStore();
 };
